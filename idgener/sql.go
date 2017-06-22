@@ -5,9 +5,9 @@
 package idgener
 
 import (
+	"context"
 	"database/sql"
 	"github.com/someonegg/goutility/dbutil"
-	"golang.org/x/net/context"
 )
 
 type sqlGener struct {

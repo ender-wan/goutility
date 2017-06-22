@@ -5,9 +5,9 @@
 package dbutil
 
 import (
+	"context"
 	. "database/sql"
 	"github.com/someonegg/goutility/chanutil"
-	"golang.org/x/net/context"
 )
 
 // SQLStmt is a contexted sql Stmt.

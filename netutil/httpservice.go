@@ -5,9 +5,9 @@
 package netutil
 
 import (
+	"context"
 	"errors"
 	"github.com/someonegg/goutility/chanutil"
-	"golang.org/x/net/context"
 	"net"
 	"net/http"
 	"sync"

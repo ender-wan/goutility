@@ -5,9 +5,9 @@
 package dbutil
 
 import (
+	"context"
 	. "github.com/garyburd/redigo/redis"
 	"github.com/someonegg/goutility/chanutil"
-	"golang.org/x/net/context"
 	"time"
 )
 

@@ -5,9 +5,9 @@
 package idgener
 
 import (
+	"context"
 	"github.com/garyburd/redigo/redis"
 	"github.com/someonegg/goutility/dbutil"
-	"golang.org/x/net/context"
 	"time"
 )
 
