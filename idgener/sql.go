@@ -7,7 +7,7 @@ package idgener
 import (
 	"context"
 	"database/sql"
-	"github.com/someonegg/goutility/dbutil"
+	"github.com/ender-wan/goutility/dbutil"
 )
 
 type sqlGener struct {

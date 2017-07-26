@@ -6,7 +6,7 @@ package netutil
 
 import (
 	"context"
-	"github.com/someonegg/goutility/chanutil"
+	"github.com/ender-wan/goutility/chanutil"
 	"io"
 	"net"
 	. "net/http"

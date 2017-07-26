@@ -8,7 +8,7 @@
 //   package main
 //
 //   import (
-//   	"github.com/someonegg/goutility/logf"
+//   	"github.com/ender-wan/goutility/logf"
 //   )
 //
 //   func main() {

@@ -6,17 +6,18 @@ package dbutil
 
 import (
 	"context"
-	. "database/sql"
-	"github.com/someonegg/goutility/chanutil"
+	"database/sql"
+
+	"github.com/ender-wan/goutility/chanutil"
 )
 
 // SQLStmt is a contexted sql Stmt.
 type SQLStmt struct {
 	db *SQLDB
-	s  *Stmt
+	s  *sql.Stmt
 }
 
-func newSQLStmt(db *SQLDB, s *Stmt) *SQLStmt {
+func newSQLStmt(db *SQLDB, s *sql.Stmt) *SQLStmt {
 	return &SQLStmt{db: db, s: s}
 }
 
@@ -25,7 +26,7 @@ func (s *SQLStmt) Close() error {
 }
 
 func (s *SQLStmt) Exec(ctx context.Context,
-	args ...interface{}) (Result, error) {
+	args ...interface{}) (sql.Result, error) {
 
 	err := s.db.acquireConn(ctx)
 	if err != nil {
@@ -37,7 +38,7 @@ func (s *SQLStmt) Exec(ctx context.Context,
 }
 
 func (s *SQLStmt) Query(ctx context.Context,
-	args ...interface{}) (*Rows, error) {
+	args ...interface{}) (*sql.Rows, error) {
 
 	err := s.db.acquireConn(ctx)
 	if err != nil {
@@ -49,7 +50,7 @@ func (s *SQLStmt) Query(ctx context.Context,
 }
 
 func (s *SQLStmt) QueryRow(ctx context.Context,
-	args ...interface{}) (*Row, error) {
+	args ...interface{}) (*sql.Row, error) {
 
 	err := s.db.acquireConn(ctx)
 	if err != nil {
@@ -63,10 +64,10 @@ func (s *SQLStmt) QueryRow(ctx context.Context,
 // SQLTx is a contexted sql Tx.
 type SQLTx struct {
 	db *SQLDB
-	*Tx
+	*sql.Tx
 }
 
-func newSQLTx(db *SQLDB, tx *Tx) *SQLTx {
+func newSQLTx(db *SQLDB, tx *sql.Tx) *SQLTx {
 	return &SQLTx{db: db, Tx: tx}
 }
 
@@ -84,11 +85,11 @@ func (tx *SQLTx) Rollback() error {
 
 // SQLDB is a contexted sql DB.
 type SQLDB struct {
-	db     *DB
+	db     *sql.DB
 	concur chanutil.Semaphore
 }
 
-func NewSQLDB(db *DB, maxConcurrent int) *SQLDB {
+func NewSQLDB(db *sql.DB, maxConcurrent int) *SQLDB {
 	mi := maxConcurrent / 5
 	if mi <= 0 {
 		mi = 2
@@ -170,7 +171,7 @@ func (d *SQLDB) Prepare(ctx context.Context,
 }
 
 func (d *SQLDB) Exec(ctx context.Context,
-	query string, args ...interface{}) (Result, error) {
+	query string, args ...interface{}) (sql.Result, error) {
 
 	err := d.acquireConn(ctx)
 	if err != nil {
@@ -192,7 +193,7 @@ func (d *SQLDB) Ping(ctx context.Context) error {
 }
 
 func (d *SQLDB) Query(ctx context.Context,
-	query string, args ...interface{}) (*Rows, error) {
+	query string, args ...interface{}) (*sql.Rows, error) {
 
 	err := d.acquireConn(ctx)
 	if err != nil {
@@ -204,7 +205,7 @@ func (d *SQLDB) Query(ctx context.Context,
 }
 
 func (d *SQLDB) QueryRow(ctx context.Context,
-	query string, args ...interface{}) (*Row, error) {
+	query string, args ...interface{}) (*sql.Row, error) {
 
 	err := d.acquireConn(ctx)
 	if err != nil {

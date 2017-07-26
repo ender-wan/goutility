@@ -7,7 +7,7 @@ package dbutil
 import (
 	"context"
 	. "github.com/garyburd/redigo/redis"
-	"github.com/someonegg/goutility/chanutil"
+	"github.com/ender-wan/goutility/chanutil"
 	"time"
 )
 

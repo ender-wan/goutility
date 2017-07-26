@@ -7,7 +7,7 @@ package netutil
 import (
 	"context"
 	"errors"
-	"github.com/someonegg/goutility/chanutil"
+	"github.com/ender-wan/goutility/chanutil"
 	"net"
 	"net/http"
 	"sync"

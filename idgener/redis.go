@@ -7,7 +7,7 @@ package idgener
 import (
 	"context"
 	"github.com/garyburd/redigo/redis"
-	"github.com/someonegg/goutility/dbutil"
+	"github.com/ender-wan/goutility/dbutil"
 	"time"
 )
 

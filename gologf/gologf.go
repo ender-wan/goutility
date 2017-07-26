@@ -8,7 +8,7 @@
 //   package main
 //
 //   import (
-//   	"github.com/someonegg/goutility/gologf"
+//   	"github.com/ender-wan/goutility/gologf"
 //   )
 //
 //   func main() {
